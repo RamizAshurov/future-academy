@@ -1,0 +1,82 @@
+.welcome {
+    margin-top: to-rem(85);
+    @include adaptive-value(margin-top, 34, 85, 576, $container-width);
+    .section__title {
+        font-size: to-rem(36);
+        font-weight: 700;
+        line-height: math.div(65,36);
+        text-align: center;
+    }
+    &__body {
+        margin-top: to-rem(60);
+    }
+    &__advantages {
+        display: flex;
+        justify-content: space-between;
+        gap: to-rem(100);
+        @include adaptive-value(gap, 50, 100, 992, $container-width)
+    }
+    @include tablet {
+        &__advantages {
+            flex-wrap: wrap;
+        }
+        &__advatage-item {
+            flex-basis: calc(50% - to-rem(25));
+            max-width: to-rem(380);
+        }
+    }
+    @include gap {
+        &__advantages {
+            justify-content: space-between;
+        }
+    }
+    @include phone {
+        .section__title {
+            font-size: to-rem(24);
+            line-height: math.div(34,24);
+        }
+        &__body {
+            margin-top: to-rem(24);
+        }
+        &__advantages {
+            gap: to-rem(20) to-rem(10);
+        }
+        &__advatage-item {
+            flex-basis: calc(50% - to-rem(5));
+        }
+    }
+}
+.section {
+
+    &__header {
+    }
+
+    &__title {
+    }
+
+    &__body {
+    }
+}
+
+.advantage {
+    &__icon {
+    }
+
+    &__desc {
+        font-size: to-rem(18);
+        font-weight: 500;
+        line-height: math.div(26,18);
+        &:not(:first-child) {
+            margin-top: to-rem(30)
+        }
+    }
+    @include phone {
+        &__desc {
+            font-size: to-rem(12);
+            line-height: math.div(18,12);
+            &:not(:first-child) {
+                margin-top: to-rem(15)
+            }
+        }
+    }
+}

@@ -1,0 +1,500 @@
+.header {
+    padding: to-rem(20) 0;
+    &--light {
+        background-color: $white;
+    }
+    &--dark {
+        $background-color: $darkblue
+    }
+
+    &__container {
+        display: flex;
+        gap: to-rem(16);
+        align-items: center;
+    }
+    &__logo {
+        svg {
+            width: to-rem(100);
+            height: auto;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        flex-grow: 1;
+        column-gap: to-rem(16);
+        justify-content: space-between;
+        margin-left: to-rem(64);
+        @include adaptive-value(margin-left, 0, 64, 992, 1280);
+    }
+
+    &__menu, &__actions {
+        display: flex;
+        column-gap: to-rem(40);
+        @include adaptive-value(column-gap, 16, 40, 992, 1280);
+        align-items: center;
+    }
+    &__menu-item {
+    }
+
+    &__menu-link {
+        color: $black;
+        display: flex;
+        gap: to-rem(16);
+        align-items: flex-end;
+        span {
+            font-size: to-rem(14);
+            font-weight: 500;
+        }
+    }
+    &__menu-icon {
+        flex-shrink: 0;
+        width: to-rem(20);
+        height: to-rem(16);
+        stroke: currentColor;
+    }
+    &__actions {
+        margin-left: auto;
+    }
+
+    &__city {
+        display: flex;
+        gap: to-rem(10);
+        align-items: baseline;
+    }
+
+    &__city-icon {
+        align-self: center;
+        width: to-rem(17);
+        height: to-rem(20);
+        stroke: currentColor;
+    }
+
+    &__city-name {
+        color: $black;
+        font-size: to-rem(14);
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    &__city-arrow {
+        width: to-rem(10);
+        height: to-rem(7);
+        stroke: currentColor;
+    }
+
+    &__cities {
+        display: flex;
+        flex-direction: column;
+        gap: to-rem(20);
+        padding: to-rem(20);
+        min-width: to-rem(224);
+    }
+    &__contacts {
+        display: flex;
+        flex-direction: column;
+        gap: to-rem(12);
+    }
+    &__phone {
+        font-size: to-rem(16);
+        font-weight: 500;
+        line-height: math.div(26, 16);
+    }
+    &__address, &__email {
+        display: none;
+        color: $darkblue;
+        font-size: to-rem(14);
+        font-weight: 500;
+        line-height: math.div(26, 14);
+    }
+    &__login {
+        display: flex;
+        gap: to-rem(8);
+        align-items: center;
+        span {
+            color: $black;
+            font-size: to-rem(14);
+            font-weight: 500;
+        }
+    }
+    &__login-icon {
+        stroke: $darkblue;
+        width: to-rem(18);
+        height: to-rem(19);
+    }
+    &__social {
+        display: none;
+        flex-wrap: wrap;
+        gap: to-rem(16) to-rem(40);
+        align-items: center;
+    }
+    &__yandex-dzen-blog {
+        display: none;
+        color: $darkblue;
+        svg {
+            height: auto;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+    &__burger {
+        --padding-x: 12px;
+        --padding-y: 18px;
+        --width: 42px;
+        --height: 28px;
+        --strip-height: 4px;
+        box-sizing: content-box;
+        display: none;
+        cursor: pointer;
+        position: relative;
+        padding: var(--padding-y) var(--padding-x);
+        width: var(--width);
+        height: var(--height);
+        &::before, &::after {
+            content: "";
+            left: var(--padding-x);
+            width: calc(100% - 2 * var(--padding-x));
+            transform-origin: center center;
+            transition: transform 0.3s ease 0s;
+        }
+        &::before, &:after, span {
+            background-color: $darkblue;
+            border-radius: to-rem(4);
+            position: absolute;
+            height: var(--strip-height);
+        }
+        &::before {
+            top: var(--padding-y)
+        }
+        &::after {
+            bottom: var(--padding-y);
+        }
+        span {
+            top: calc(50% - 0.5 * var(--strip-height));
+            right: var(--padding-x);
+            width: calc(0.8125 * (100% - 2 * var(--padding-x)));
+            opacity: 1;
+            transition: opacity 0.2s ease 0s;
+        }
+        &--open {
+            &:before {
+                transform: translateY(calc(0.5 * (var(--height) - var(--strip-height)))) rotate(45deg);
+            }
+            &:after {
+                transform: translateY(calc(-0.5 * (var(--height) - var(--strip-height)))) rotate(-45deg);
+            }
+            span {
+                opacity: 0;
+            }
+        }
+    }
+    @include min_tablet {
+        &__cities {
+            background-color: #F6F7F9;
+            border-radius: to-rem(10);
+            box-shadow: 0 to-rem(4) to-rem(16) 0 rgba(0, 0, 0, 0.6);
+        }
+    }
+    @include tablet {
+        &__container {
+            justify-content: space-between;
+            position: relative
+        }
+        &__nav {
+            background-color: $white;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: to-rem(48) to-rem(20) to-rem(40);
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            height: calc(100% - to-rem(115));
+            width: 100%;
+            overflow: auto;
+            transform: translate3d(100%, 0, 0);
+            transition: transform 0.3s ease 0s;
+            z-index: 10;
+            &--open {
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        &__menu, &__actions {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        &__actions {
+            margin-left: 0;
+        }
+        &__burger {
+            display: block;
+        }
+    }
+    @media screen and (min-width: $phone) and (max-width: $tablet) {
+        &__menu {
+            row-gap: to-rem(32);
+        }
+        &__menu-item {
+            gap: to-rem(12);
+        }
+        &__menu-link {
+            span {
+                font-size: to-rem(26);
+            }
+        }
+        &__menu-icon {
+            width: to-rem(36);
+            height: to-rem(29);
+        }
+        &__actions {
+            row-gap: to-rem(32);
+            row-gap: 0;
+            margin-top: to-rem(72);
+        }
+        &__city {
+            column-gap: to-rem(18)
+        }
+        &__city-icon {
+            width: to-rem(26);
+            height: to-rem(30)
+        }
+        &__city-name {
+            font-size: to-rem(26);
+        }
+        &__city-arrow {
+            width: to-rem(15);
+            height: to-rem(12);
+        }
+        &__cities {
+            border-radius: to-rem(16);
+            padding: to-rem(32);
+            min-width: to-rem(380);
+        }
+        &__contacts {
+            row-gap: to-rem(16);
+            margin-top: to-rem(72);
+            order: 1;
+        }
+        &__address, &__email {
+            display: block;
+        }
+        &__phone, &__address, &__email {
+            font-size: to-rem(22);
+        }
+        &__login {
+            gap: to-rem(16);
+            margin-top: to-rem(48);
+            span {
+                font-size: to-rem(28)
+            }
+        }
+        &__login-icon {
+            width: to-rem(27);
+            height: to-rem(28.5);
+        }
+        &__social, &__yandex-dzen-blog {
+            margin-top: to-rem(42);
+            order: 2;
+        }
+        &__social {
+            display: flex;
+        }
+        &__social-item {
+            &:first-child {
+                .header__social-icon {
+                    width: to-rem(33.75);
+                }
+            }
+            &:nth-child(2) {
+                .header__social-icon {
+                    width: to-rem(26.25);
+                }
+            }
+            &:nth-child(3) {
+                .header__social-icon {
+                    width: to-rem(30);
+                }
+            }
+            &:nth-child(4) {
+                .header__social-icon {
+                    width: to-rem(33.75);
+                }
+            }
+            &:last-child {
+                .header__social-icon {
+                    width: to-rem(26.25);
+                }
+            }
+        }
+        &__social-icon {
+            height: to-rem(32.5);
+        }
+        &__yandex-dzen-blog {
+            display: block;
+            svg {
+                color: $darkblue;
+                width: to-rem(150);
+            }
+        }
+    }
+    @include gap {
+        &__burger {
+            display: block
+        }
+    }
+    @include phone {
+        padding-top: to-rem(10);
+        padding-bottom: to-rem(10);
+        &__logo {
+            svg {
+                width: auto;
+                height: to-rem(40)
+            }
+        }
+        &__nav {
+            padding-top: to-rem(22);
+            padding-left: to-rem(10);
+            padding-right: to-rem(10);
+            height: calc(100% - to-rem(64));
+        }
+        &__menu {
+            gap: 0;
+        }
+        &__menu-item {
+            &:first-child {
+                margin-bottom: to-rem(26);
+            }
+            &:not(:first-child) {
+                font-weight: 400;
+                line-height: math.div(38,14);
+            }
+        }
+        &__actions {
+            margin-top: to-rem(50);
+        }
+        &__cities {
+            padding: to-rem(16) to-rem(24);
+        }
+        &__contacts {
+            margin-top: to-rem(50);
+            order: 1;
+        }
+        &__phone {
+            font-size: to-rem(18);
+            font-weight: 600;
+        }
+        &__address, &__email {
+            display: block;
+        }
+        &__login {
+            margin-top: to-rem(32)
+        }
+        &__social {
+            display: flex;
+            margin-top: to-rem(24);
+            order: 2
+        }
+        &__social-item {
+            &:first-child {
+                .header__social-icon {
+                    width: to-rem(27);
+                }
+            }
+            &:nth-child(2) {
+                .header__social-icon {
+                    width: to-rem(21);
+                }
+            }
+            &:nth-child(3) {
+                .header__social-icon {
+                    width: to-rem(24);
+                }
+            }
+            &:nth-child(4) {
+                .header__social-icon {
+                    width: to-rem(27);
+                }
+            }
+            &:last-child {
+                .header__social-icon {
+                    width: to-rem(21);
+                }
+            }
+        }
+        &__social-icon {
+            height: to-rem(26);
+        }
+        &__yandex-dzen-blog {
+            display: block;
+            margin-top: to-rem(24);
+            order: 2;
+            svg {
+                width: to-rem(116);
+            }
+        }
+    
+        &__burger {
+            --padding-x: 6px;
+            --padding-y: 10px;  
+            --width: 21px;
+            --height: 15px;
+            --strip-height: 2px
+        }
+    }
+}
+
+
+.city-item {
+    display: flex;
+    gap: to-rem(10);
+    align-items: center;
+    &__radio {
+        border: to-rem(2) solid $gray;
+        border-radius: 50%;
+        position: relative;
+        width: to-rem(20);
+        height: to-rem(20);
+        &::before {
+            background-color: $gray;
+            border-radius: 50%;
+            content: "";
+            position: absolute;
+            inset: to-rem(3);
+            opacity: 0;
+            transform: scale(0.6);
+            transition: all 0.2s ease 0s;
+        }
+    }
+
+    &__name {
+        color: $gray;
+        font-size: to-rem(14);
+        font-weight: 500;
+    }
+    &.dropdown__list-item--selected {
+        .city-item__radio::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    &--selected {
+        .city-item__radio::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    @media screen and (min-width: $phone) and (max-width: $tablet) {
+        gap: to-rem(18);
+        &__radio {
+            width: to-rem(32);
+            height: to-rem(32);
+            &:before {
+
+            }
+        }
+        &__name {
+            font-size: to-rem(26);
+        }
+    }
+}

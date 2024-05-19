@@ -1,0 +1,24 @@
+{% set title = "Главная"%} 
+{% set headerTheme = "header--light" %}
+
+
+{% extends "templates/layout.njk" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="css/libs/swiper-bundle.min.css">
+{% endblock %}
+{% block content %}
+    {% include "pages-blocks/hero.njk" %}
+    {% include "pages-blocks/courses.njk" %}
+    {% include "pages-blocks/video-section.njk" %}
+    {% include "pages-blocks/stat.njk" %}
+    {% include "pages-blocks/mini-blog.njk" %}
+    {% include "pages-blocks/reviews.njk" %}
+    {% include "pages-blocks/welcome.njk" %}
+    {% include "pages-blocks/contact-us.njk" %}
+{% endblock %}
+
+{% block script %}
+    <script src="js/libs/swiper-bundle.min.js"></script>
+    <script src="js/app.min.js"></script>
+{% endblock %}

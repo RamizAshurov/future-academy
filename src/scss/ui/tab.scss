@@ -1,0 +1,41 @@
+.tab {
+    &__panel {
+        border-bottom: 1px solid #e0e0e0;
+        display: flex;
+        column-gap: to-rem(24);
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 0 math.div(100, 1220) * 100% to-rem(16) 0;
+        position: relative;
+    }
+    &__line {
+        background: $gradient-1;
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: to-rem(4);
+        transition: all 0.3s ease 0s;
+    }
+
+    &__pages {
+        padding-top: to-rem(38)
+    }
+
+    &__page {
+        display: none;
+        &--active {
+            display: block;
+        }
+    }
+    @include phone {
+        &__panel {
+            column-gap: to-rem(16);
+            padding-right: 0;
+            padding-bottom: to-rem(6);
+        }
+        &__pages {
+            padding-top: to-rem(18);
+        }
+    }
+}

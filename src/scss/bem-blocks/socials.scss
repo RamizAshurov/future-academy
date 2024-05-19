@@ -1,0 +1,13 @@
+.socials {
+    display: flex;
+    align-items: center;
+    gap: to-rem(20);
+
+
+    &__item-link {
+    }
+
+    &__item-icon {
+        height: to-rem(32.5);
+    }
+}

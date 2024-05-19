@@ -1,0 +1,265 @@
+.mini-blog {
+    margin-top: to-rem(82);
+    @include adaptive_value(margin-top, 18, 92, 576, $container-width);
+    &__content {
+        display: grid;
+        gap: to-rem(20);
+        grid-template-columns: calc(100% * math.div(480, 1180)) 1fr 1fr;
+    }
+    &__subject {
+        &--full-width {
+            grid-column: span 3;
+        }
+        &--horizontal {
+            grid-column: span 2;
+        }
+        &--vertical {
+            grid-row: span 2;
+        }
+    }
+    @include tablet {
+        &__content {
+            grid-template-columns: 1fr 1fr;
+        }
+        &__subject {
+            &--full-width {
+                grid-column: span 2;
+            }
+            &--vertical {
+                grid-column: span 2;
+            }
+        }
+    }
+    @include phone {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        max-width: to-rem(480);
+        &__content {
+            grid-template-columns: 1fr;
+        }
+        &__subject {
+            grid-column: span 1;
+        }
+    }
+}
+
+.subject {
+    border-radius: to-rem(20);
+    display: grid;
+    &__date {
+        display: flex;
+        flex-direction: column;
+        row-gap: to-rem(12);
+    }
+    &__icon {
+    }
+    &__name {
+        font-size: to-rem(24);
+        font-weight: 500;
+        line-height: math.div(26,24);
+    }
+
+    &__desc {
+        color: $gray;
+        font-size: to-rem(16);
+        font-weight: 400;
+        line-height: math.div(24,16);
+    }
+
+    &__button {
+        border: to-rem(2) solid $black;
+        display: flex;
+        gap: to-rem(10);
+        align-items: center;
+        justify-content: center;
+        span {
+            font-size: to-rem(14);
+            font-weight: 500;
+            line-height: math.div(26,14);
+        }
+    }
+    &__button-arrow {
+        width: to-rem(10);
+        height: to-rem(7);
+        stroke: currentColor;
+        transform: rotate(-90deg);
+    }
+    &--normal {
+        align-content: flex-start;
+        align-items: center;
+        justify-items: center;
+        padding: to-rem(34) to-rem(20);
+        min-height: to-rem(220);
+        text-align: center;
+        .subject__name {
+            &:not(:first-child) {
+                margin-top: to-rem(45)
+            }
+        }
+    }
+    &--wide {
+        grid-auto-flow: column;
+        row-gap: to-rem(30);
+        column-gap: to-rem(55);
+        align-content: end;
+        padding: to-rem(23) to-rem(40) ;
+        min-height: to-rem(160);
+        text-align: left;
+        .subject__icon, .subject__button {
+            align-self: center;
+        }
+        .subject__date {
+            grid-column: span 1;
+            grid-row: span 2;
+            align-self: center;
+        }
+        .subject__date-day {
+            font-size: to-rem(68);
+            font-weight: 700;
+            line-height: 1;
+        }
+        .subject__date-month {
+            font-size: to-rem(26);
+            font-weight: 500;
+            line-height: 1;
+        }
+        .subject__button {
+            grid-row: span 2
+        }
+    }
+    &--horizontal {
+        grid-template-rows: auto auto;
+        gap: to-rem(30) to-rem(50);
+        grid-auto-flow: column;
+        align-content: center;
+        padding: to-rem(58) to-rem(50);
+        text-align: left;
+        picture:has(.subject__icon), .subject__icon {
+            grid-row: span 2;
+            align-self: center;
+        }
+    }
+    &--vertical {
+        align-content: start;
+        padding: to-rem(34) to-rem(20);
+        text-align: center;
+        .subject__name {
+            &:not(:first-child) {
+                margin-top: to-rem(36)
+            }
+        }
+        .subject__desc {
+            &:not(:first-child) {
+                margin-top: to-rem(40)
+            }
+        }
+        .subject__button {
+            &:not(:first-child) {
+                margin-top: to-rem(48)
+            }
+        }
+    }
+    &--darkorange {
+        background-color: #F7BC75;
+    }
+    &--blue {
+        background-color: #C5DDFF;
+    }
+    &--green {
+        background-color: #B8EFCF;
+    }
+    &--rose {
+        background-color: #FFEEF6;
+    }
+    &--lightorange {
+        background-color: #FFE38E;
+    }
+
+    @media screen and (min-width: $phone) and (max-width: $tablet) {
+        &--vertical {
+            grid-auto-flow: column;
+            gap: to-rem(30) to-rem(50);
+            align-items: center;
+            justify-items: start;
+            text-align: left;
+            & > * { margin-top: 0 !important }
+            picture:has(.subject__icon) {
+                grid-row: span 2;
+            }
+            .subject__button {
+                grid-row: span 2;
+                align-self: center;
+            }
+        }
+    }
+    @include gap {
+        &--wide {
+            column-gap: to-rem(30);
+        }
+    }
+    @include phone {
+        &--normal {
+            padding: to-rem(28) to-rem(20) to-rem(23);
+            min-height: 0;
+            .subject__name {
+                &:not(:first-child) {
+                    margin-top: to-rem(22);
+                }
+            }
+        }
+        &--wide {
+            grid-template-columns: auto auto;
+            grid-auto-flow: row;
+            row-gap: 0;
+            column-gap: to-rem(30);
+            justify-content: start;
+            padding: to-rem(20);
+            text-align: left;
+            .subject__icon, .subject__button {
+                align-self: center;
+            }
+            .subject__date {
+                grid-row: span 1;
+                row-gap: to-rem(8);
+            }
+            .subject__desc, .subject__button {
+                grid-column: span 2;
+            }
+            .subject__desc {
+                margin-top: to-rem(40)
+            }
+            .subject__button {
+                margin-top: to-rem(20);
+            }
+        }
+        &--vertical {
+            padding-bottom: to-rem(20);
+            & > * {
+                &:not(:first-child) {
+                    margin-top: to-rem(17);
+                }
+            }
+            .subject__button {
+                &:not(:first-child) {
+                    margin-top: to-rem(20);
+                }
+            }
+        }
+        &--horizontal {
+            gap: to-rem(20);
+            grid-auto-flow: row;
+            padding: to-rem(20) to-rem(20) to-rem(26);
+            picture:has(.subject__icon), .subject__icon {
+                grid-row: span 1;
+            }
+            .subject__icon {
+                width: to-rem(60);
+                height: auto;
+            }
+            .subject__desc {
+                grid-column: span 2;
+            }
+        }
+    }
+}

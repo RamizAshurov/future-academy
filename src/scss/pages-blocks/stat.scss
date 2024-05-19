@@ -1,0 +1,91 @@
+.stat {
+    margin-top: to-rem(116);
+    @include adaptive-value(margin-top, 16, 116, 480, $container-width);
+    &__title {
+        font-size: to-rem(24);
+        font-weight: 700;
+        line-height: math.div(34, 24);
+        max-width: to-rem(780);
+        &:not(:last-child) {
+            margin-bottom: to-rem(42);
+        }
+    }
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: to-rem(22);
+    }
+    @include min_gap {
+        &__list-item {
+            .stat-item__name {
+                max-width: to-rem(250);
+            }
+            &:first-child {
+                margin-right: to-rem(120)
+            }
+            &:nth-child(2) {
+                margin-right: to-rem(80)
+            }
+        }
+    }
+    @include gap {
+        &__list {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+    @include phone {
+        &__title {
+            font-size: to-rem(18);
+            line-height: math.div(24, 18);
+            &:not(:last-child) {
+                margin-bottom: to-rem(24);
+            }
+        }
+    }
+}
+
+.stat-item {
+    &__value {
+        background: $gradient-1;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-stroke: to-rem(8) transparent;
+        color: $page-bg;
+        font-size: to-rem(86);
+        @include adaptive-value(font-size, 64, 86, 576, 1220);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        margin-left: -2px;
+        margin-right: -2px;
+        padding-left: 2px;
+        padding-right: 2px;
+        &:not(:last-child) {
+            margin-bottom: to-rem(20);
+        }
+    }
+    &__name {
+        font-size: to-rem(20);
+        font-weight: 500;
+        line-height: math.div(26, 20);
+    }
+    @include gap {
+        &__value {
+            &:not(:last-child) {
+                margin-bottom: to-rem(12);
+            }
+        }
+    }
+    @include phone {
+        &__value {
+            line-height: 1;
+            &:not(:last-child) {
+                margin-bottom: 0;
+            }
+        }
+        &__name {
+            font-size: to-rem(18);
+            line-height: math.div(34, 18);
+        }
+    }
+}

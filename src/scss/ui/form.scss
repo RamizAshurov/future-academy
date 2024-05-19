@@ -1,0 +1,156 @@
+.form {
+    &__field {
+        background-color: #DDDFE6;
+        border-radius: to-rem(6);
+        position: relative;
+        overflow: hidden;
+        z-index: 0;
+        &::before, &::after {
+            content: "";
+            position: absolute;
+        }
+        &::before {
+            background: $gradient-1;
+            inset: 0;
+            opacity: 0;
+            z-index: -2;
+            transition: opacity 0.2s ease 0s;
+        }
+        &::after {
+            background-color: #DDDFE6;
+            border-radius: inherit;
+            inset: to-rem(2);
+            z-index: -1;
+        }
+        &:focus-within {
+            &::before {
+                opacity: 1;
+            }
+        }
+    }
+    &__input {
+        color: $darkblue;
+        font-size: to-rem(14);
+        font-weight: 400;
+        padding: to-rem(16) to-rem(20);
+        position: relative;
+        width: 100%;
+        z-index: 0;
+        &::placeholder {
+            font-family: inherit;
+        }
+        &:placeholder-shown {
+            color: #4F4F4F
+        }
+        &:disabled {
+            background-color: #EAEBF0;
+        }
+    }
+    &__radio, &__check {
+        display: flex;
+        align-items: center;
+        gap: to-rem(10);
+    }
+    &__radio-input, &__check-input {
+        border: 0;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+    }
+    &__radio {
+        display: flex;
+        align-items: center;
+        gap: to-rem(10);
+        position: relative;
+    }
+    &__radio-input {
+        &:checked + .form__radio-button {
+            &::before {
+                background: $gradient-1;
+            }
+            span {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    }
+    &__radio-button {
+        flex-shrink: 0;
+        position: relative;
+        width: to-rem(20);
+        height: to-rem(20);
+        &::before, &::after, span {
+            border-radius: 50%;
+            content: "";
+            position: absolute;
+        }
+        &::before {
+            background: #333333;
+            inset: 0;
+            transition: all 0.3s ease 0s;
+        }
+        &::after {
+            background-color: $white;
+            inset: to-rem(2);
+        }
+        span {
+            background: $gradient-1;
+            inset: to-rem(5);
+            width: 50%;
+            height: 50%;
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.3s ease 0s;
+            z-index: 1;
+        }
+    }
+    &__radio-label {
+        font-size: to-rem(14);
+        font-weight: 400;
+    }
+    &__check-input {
+        &:checked + .form__check-box::before {
+            opacity: 1;
+        }
+    }
+    &__check-box {
+        background-color: #333333;
+        border-radius: to-rem(4);
+        position: relative;
+        width: to-rem(20);
+        height: to-rem(20);
+        overflow: hidden;
+        z-index: 0;
+        &::before, &::after {
+            content: "";
+            position: absolute;
+        }
+        &::before {
+            background: $gradient-1;
+            inset: 0;
+            opacity: 0;
+            z-index: -2;
+            transition: opacity 0.2s ease 0s;
+        }
+        &::after {
+            background-color: $white;
+            border-radius: inherit;
+            inset: to-rem(2);
+            z-index: -1;
+        }
+    }
+    &__check-label {
+        font-size: to-rem(14);
+        font-weight: 400;
+    }
+    &__agreement {
+        color: #4F4F4F;
+        font-size: to-rem(10);
+        font-weight: 400;
+        line-height: 1.4;
+    }
+}

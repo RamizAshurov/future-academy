@@ -1,0 +1,32 @@
+@use "sass:math";
+
+@import "base/_reset.scss";
+@import "base/_vars.scss";
+@import "base/_fonts.scss";
+@import "base/_icons.scss";
+@import "mixins/breakpoints.scss";
+@import "mixins/media.scss";
+@import "base.scss";
+
+// ui components 
+@import "ui/button.scss";
+@import "ui/dropdown.scss";
+@import "ui/tab.scss";
+@import "ui/form.scss";
+@import "ui/popup.scss";
+
+// bem blocks
+@import "bem-blocks/socials.scss";
+
+// page blocks
+@import "pages-blocks/hero.scss";
+@import "pages-blocks/courses.scss";
+@import "pages-blocks/video-section.scss";
+@import "pages-blocks/stat.scss";
+@import "pages-blocks/mini-blog.scss";
+@import "pages-blocks/reviews.scss";
+@import "pages-blocks/welcome.scss";
+@import "pages-blocks/contact-us.scss";
+
+@import "modules/header.scss";
+@import "modules/footer.scss";

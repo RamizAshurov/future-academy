@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ title }}</title>
+        {% block styles %}
+            
+        {% endblock %}
+        <link rel="stylesheet" href="css/style.min.css">
+    </head>
+    <body>
+        {% include "../includes/header.njk" %}
+        {% block content %}{% endblock %}
+        {% include "../includes/footer.njk" %}
+        <div class="popup youtube-modal">
+            <div class="popup__container youtube-modal__container">
+                <div class="popup__content youtube-modal__content">
+                    <button class="popup__close youtube-modal__close" type="button">
+                        <svg class="icon icon--close">
+                            <use href="images/svg-icons.svg#close"></use>
+                        </svg>
+                    </button>
+                    <iframe 
+                        width="560" height="315" 
+                        src="https://www.youtube.com/embed/1Y5n0nu98Vg?si=b4rs_WD_0OBfgYsE" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        {% block script %}
+        {% endblock %}
+    </body>
+</html>

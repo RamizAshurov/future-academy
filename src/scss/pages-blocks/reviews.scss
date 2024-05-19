@@ -1,0 +1,181 @@
+.reviews {
+    background-color: $darkblue;
+    margin: to-rem(100) 0 0;
+    @include adaptive-value(margin-top, 20, 100, 576, $container-width);
+    padding: to-rem(62) 0 to-rem(32);
+    @include adaptive-value(padding-top, 28, 62, 576, $container-width);
+    position: relative;
+    &__header {
+        text-align: center;
+    }
+
+    &__title {
+        color: $white;
+        font-size: to-rem(36);
+        font-weight: 700;
+    }
+    &__body {
+        margin-top: to-rem(44);
+    }
+    &__swiper {
+        .swiper-slide {
+            width: to-rem(280);
+        }
+        .swiper-scrollbar {
+            background-color: $white;
+            border-radius: 0;
+            margin: to-rem(60) 0 0;
+            position: static;
+            height: to-rem(2);
+        }
+        .swiper-scrollbar-drag {
+            background: $gradient-1;
+            border-radius: 0;
+            top: -100%;
+            height: to-rem(4)
+        }
+    }
+    .vector {
+        position: absolute;
+        svg {
+            width: 100%;
+            height: auto;
+            vertical-align: top;
+        }
+        &--cross {
+            top: math.percentage($number: math.div(50, 600));
+            left: math.percentage($number: math.div(290, 1920));
+            width: math.percentage($number: math.div(130, 1920));
+        }
+        &--circle {
+            right: math.percentage($number: math.div(290, 1920));
+            bottom: math.percentage($number: math.div(70, 600));
+            width: math.percentage($number: math.div(120, 1920));
+        }
+        &--triangle {
+            left: math.percentage($number: math.div(930, 1920));
+            bottom: math.percentage($number: math.div(142, 600));
+            width: math.percentage($number: math.div(98, 1920));
+        }
+        &--line-2 {
+            left: math.percentage($number: math.div(-5, 1920));
+            bottom: math.percentage($number: math.div(63, 600));
+            bottom: -4%;
+            width: math.percentage($number: math.div(126, 1920));
+            svg {
+                transform: rotate(-90deg);
+            }
+        }
+        &--line-3 {
+            top: math.percentage($number: math.div(-12, 600));
+            right: math.percentage($number: math.div(300, 1920));
+            width: math.percentage($number: math.div(338, 1920));
+        }
+    }
+    // &__review-item {
+    //     width: to-rem(280);
+    // }
+    @include tablet {
+        .vector {
+            &--cross {
+                top: 5%;
+                left: 10%;
+                width: 10%;
+            }
+            &--circle {
+                
+            }
+            &--triangle {
+                bottom: 7.4%;
+                width: 12%;
+            }
+            &--circle {
+                width: 8%;
+            }
+        }
+    }
+    @include phone {
+        padding-bottom: to-rem(50);
+        &__title {
+            font-size: to-rem(28);
+            margin: 0 auto;
+            max-width: to-rem(300);
+        }
+        &__body {
+            margin-top: to-rem(15)
+        }
+        &__swiper {
+            .swiper-slide {
+                width: calc(240 / 320 * 100%);
+            }
+            .swiper-scrollbar {
+                margin-top: to-rem(40)
+            }
+        }
+        .vector {
+            display: none;
+        }
+    }
+    @media screen and (max-width: 375px) {
+        &__title {
+            font-size: to-rem(24);
+        }
+    }
+}
+
+.review {
+    background-color: $white;
+    border-radius: to-rem(20);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: to-rem(20);
+    &__author {
+        display: grid;
+        grid-auto-flow: column;
+        align-items: start;
+        gap: to-rem(8) to-rem(10);
+    }
+    &__author-avatar {
+        background-color: $darkblue;
+        border-radius: 50%;
+        grid-row: span 2;
+        width: to-rem(40);
+        height: to-rem(40);
+        overflow: hidden;
+    }
+    &__author-name {
+        font-size: to-rem(14);
+        font-weight: 700;
+    }
+    &__author-position {
+        color: #4F4F4F;
+        font-size: to-rem(12);
+        font-weight: 500;
+    }
+    &__text {
+        font-size: to-rem(14);
+        font-weight: 500;
+        line-height: math.div(22, 14);
+        margin-top: to-rem(12)
+    }
+    &__rate {
+        display: flex;
+        gap: to-rem(8);
+        align-items: center;
+        &:not(:first-child) {
+            margin-top: to-rem(32)
+        }
+    }
+    &__rate-star {
+        fill: $orange;
+        width: to-rem(22);
+        height: to-rem(22);
+    }
+    &__rate-label {
+        color: #4F4F4F;
+        font-size: to-rem(14);
+        font-weight: 500;
+        line-height: math.div(22, 14);
+    }
+}

@@ -1,0 +1,46 @@
+.dropdown {
+    position: relative;
+    &__header {
+    }
+    &__arrow {
+        transition: transform 0.2s ease 0s;
+    }
+    &__list-wrapper {
+        position: absolute;
+        top: 100%;
+        left: to-rem(-3);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease 0s;
+    }
+    &__list-item {
+        cursor: pointer;
+    }
+    &--open {
+        .dropdown__arrow {
+            transform: rotate(180deg);
+        }
+        .dropdown__list-wrapper {
+            transform: translate3d(0, to-rem(20), 0);
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    @include tablet {
+        &__list-wrapper {
+            position: static;
+            height: 0;
+            overflow: hidden;
+            opacity: 1;
+            visibility: visible;
+            transition: none;
+        }
+        &--open {
+            .dropdown__list-wrapper {
+                height: auto;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+    }
+}
+

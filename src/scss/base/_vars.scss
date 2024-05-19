@@ -1,0 +1,25 @@
+$white: #FFFFFF;
+$black: #000000;
+$gray: #333333;
+$blue: #27AAE1;
+$darkblue: #00093C;
+$orange: #F7941D;
+
+$page-bg: #F6F7F9;
+$gradient-1: linear-gradient(to right, $orange 0%, $blue 100%);
+$gradient-2: linear-gradient(90deg, $orange 0%, $blue 100%);
+
+$container-width: 1220;
+// $text-color: #333333
+// $gray: #333333
+
+// mixins 
+@mixin font-face($name, $file, $weight: 400, $style: normal) {
+	@font-face {
+		font-family: "#{$name}";
+		font-display: swap;
+		font-weight: $weight;
+		font-style: $style;
+		src: local("#{$file}"),	url("../fonts/#{$file}.woff2") format("woff2"),	url("../fonts/#{$file}.woff") format("woff");
+	}
+}

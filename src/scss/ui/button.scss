@@ -1,0 +1,73 @@
+.button {
+    border-radius: to-rem(6);
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    cursor: pointer;
+    padding: to-rem(12) to-rem(26);
+    min-height: to-rem(50);
+    min-width: to-rem(150);
+    text-align: center;
+    &--gradient {
+        background-color: $white;
+        position: relative;
+        transform-style: preserve-3d;
+        &:before {
+            background: $gradient-1;
+            content: "";
+            filter: blur(to-rem(10));
+            position: absolute;
+            inset: 0;
+            transform: translate3d(0, 0, -1px);
+            opacity: 0.3;
+            transition: all 0.2s ease 0s;
+        }
+        span {
+            font-size: to-rem(14);
+            font-weight: 500;
+            line-height: normal;
+        }
+        @include ishover {
+            &:before {
+                filter: blur(to-rem(40));
+                transform: translate3d(to-rem(10), to-rem(10), -1px);
+                opacity: 0.8;
+            }
+        }
+    }
+    &--contained,
+    &--outlined {
+        transition: all 0.2s ease 0s;
+        span {
+            font-size: to-rem(14);
+            font-weight: 700;
+            line-height: 1.86;
+        }
+    }
+    &--contained {
+        background-color: $orange;
+        color: $white;
+        @include ishover {
+            background-color: #FFAE4D;
+        }
+    }
+    &--outlined {
+        background-color: $white;
+        border: to-rem(2) solid $darkblue;
+        color: $darkblue;
+        @include ishover {
+            background-color: $blue;
+            border-color: $blue;
+            color: $white;
+        }
+    }
+    &--outlined-black {
+        background-color: $white;
+        border: to-rem(2) solid $black;
+        color: $black;
+        @include ishover {
+            background-color: $black;
+            color: $white;
+        }
+    }
+}

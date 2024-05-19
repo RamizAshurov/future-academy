@@ -1,0 +1,63 @@
+@use "sass:math";
+
+:root {
+    // --init-width: 1920;
+    // --init-width_units: calc(var(--init-width) * 1px);
+    // @media screen and (min-width: 1920px) {
+    //     --screen-diff: calc((100vw - var(--init-width_units))/var(--init-width));
+    //     --font-size: calc(16px + 16 * var(--screen-diff));
+    // }
+}
+
+@function to-rem($value) {
+    @return 1rem * math.div($value, 16);
+}
+
+// @function calc-between-width($width-start, $value-start, $width-end, $value-end) {
+//         @return calc(#{$value-start} * 1px + (#{$value-end} - #{$value-start}) * (100vw - #{$width-start} * 1px) / (#{$width-end} - #{$width-start}));
+// }
+
+// calc-between-width(1600, 16, 1920, 19.2)
+
+// .container {
+//     background: rgba(0,0,0,0.8);
+//     backdrop-filter: saturate(180%) blur(10px);
+// }
+
+// body {
+//     // font grows 1px for every 100px of viewport width
+//     font-size: calc(16px + 1vw);
+//     // leading grows along with font,
+//     // with an additional 0.1em + 0.5px per 100px of the viewport
+//     line-height: calc(1.1em + 0.5vw);
+// }
+
+body {
+    background-color: #F6F7F9;
+    color: $darkblue;
+    color: $black;
+    font-family: "Montserrat", "sans-serif";
+    min-width: to-rem(320);
+    overflow-x: hidden;
+    &._lock {
+        height: 100%;
+        overflow: hidden;
+    }
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 to-rem(20);
+    width: 100%;
+    max-width: to-rem($container-width);
+    @include phone {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+
+.icon {
+    fill: none;
+    stroke: none;
+}
